@@ -3,6 +3,17 @@ package ru.nmanzhay.radio;
 public class Radio {
     private int radioId;
     private int volume;
+    private int countChanel = 10;
+    private int  volumeMin=0;
+    private int volumeMax=100;
+
+    public Radio() {
+    }
+
+    public Radio(int countChanel) {
+        this.countChanel = countChanel;
+    }
+
 
     public int getRadioId() {
         return radioId;
@@ -10,7 +21,7 @@ public class Radio {
 
     public void next() {
         int chanel = radioId + 1;
-        if (chanel > 9) {
+        if (chanel > countChanel-1) {
             chanel = 0;
         }
         this.radioId = chanel;
@@ -19,13 +30,13 @@ public class Radio {
     public void prev() {
         int chanel = radioId - 1;
         if (chanel < 0) {
-            chanel = 9;
+            chanel = countChanel-1;
         }
         this.radioId = chanel;
     }
 
     public void setRadioId(int radioId) {
-        if (radioId < 0 || radioId > 9) {
+        if (radioId < 0 || radioId >countChanel-1 ) {
             return;
         }
         this.radioId = radioId;
@@ -36,20 +47,20 @@ public class Radio {
     }
 
     public void setVolume(int volume) {
-        if (volume < 0 || volume > 10) {
+        if (volume < volumeMin || volume > volumeMax) {
             return;
         }
         this.volume = volume;
     }
 
     public void increaseVolume() {
-        if (volume < 10) {
+        if (volume < volumeMax) {
             volume = volume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (volume > 0) {
+        if (volume > volumeMin) {
             volume = volume - 1;
         }
     }
