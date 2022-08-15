@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
     @Test
     public void positiveSetRadio() {
-        Radio radio = new Radio();
-        radio.setRadioId(5);
-        int expected = 5;
+        Radio radio = new Radio(55);
+        radio.setRadioId(15);
+        int expected = 15;
         int actual = radio.getRadioId();
         Assertions.assertEquals(expected, actual);
     }
@@ -116,7 +116,7 @@ public class RadioTest {
     @Test
     public void positiveSetVolumeMax() {
         Radio radio = new Radio();
-        radio.setVolume(11);
+        radio.setVolume(101);
         int expected = 0;
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
@@ -140,9 +140,9 @@ public class RadioTest {
     @Test
     public void positiveIncreaseVolumeMax() {
         Radio radio = new Radio();
-        radio.setVolume(10);
+        radio.setVolume(100);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
